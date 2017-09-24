@@ -36,28 +36,6 @@ int is_x_cross(char **city, int N, int y, int x) {
     ) {
         return 1;
     }
-    // diagonal-vertical crosses
-    // if (
-    //     (
-    //         c[0] == ROAD && c[1] == ROAD && c[2] != ROAD &&
-    //         c[3] != ROAD &&                 c[4] != ROAD &&
-    //         c[5] != ROAD && c[6] == ROAD && c[7] == ROAD
-    //     ) || (
-    //         c[0] != ROAD && c[1] == ROAD && c[2] == ROAD &&
-    //         c[3] != ROAD &&                 c[4] != ROAD &&
-    //         c[5] == ROAD && c[6] == ROAD && c[7] != ROAD
-    //     ) || (
-    //         c[0] == ROAD && c[1] != ROAD && c[2] != ROAD &&
-    //         c[3] == ROAD &&                 c[4] == ROAD &&
-    //         c[5] != ROAD && c[6] != ROAD && c[7] == ROAD
-    //     ) || (
-    //         c[0] != ROAD && c[1] != ROAD && c[2] == ROAD &&
-    //         c[3] == ROAD &&                 c[4] == ROAD &&
-    //         c[5] == ROAD && c[6] != ROAD && c[7] != ROAD
-    //     )
-    // ) {
-    //     return 1;
-    // }
     return 0;
 }
 
@@ -121,6 +99,23 @@ int is_t_cross(char **city, int N, int y, int x) {
             return 1;
         }
     }
+    // 101 || 101 || 001 || 100
+    // 0x0 || 0x0 || 0x0 || 0x0
+    // 100 || 001 || 101 || 101
+    if (y > 0 && y < N - 1 && x > 0 && x < N - 1) {
+        int diag_roads_count { 0 };
+        if (city[y - 1][x - 1] == ROAD) { ++diag_roads_count; }
+        if (city[y - 1][x + 1] == ROAD) { ++diag_roads_count; }
+        if (city[y + 1][x - 1] == ROAD) { ++diag_roads_count; }
+        if (city[y + 1][x + 1] == ROAD) { ++diag_roads_count; }
+        if (
+            city[y - 1][x] != ROAD && city[y][x - 1] != ROAD &&
+            city[y][x + 1] != ROAD && city[y + 1][x] != ROAD &&
+            diag_roads_count == 3
+        ) {
+            return 1;
+        }
+    }
     return 0;
 }
 
@@ -156,11 +151,9 @@ int main() {
     //     cout << endl;
     // }
 
-    cout << endl;
     for (int j = 0; j < N; ++j) {
         for (int i = 0; i < N; ++i) {
-            int tmp = check_cage(city, N, j, i);
-            switch (tmp) {
+            switch (check_cage(city, N, j, i)) {
                 case 2:
                     ++x_crossroads;
                     break;
@@ -170,9 +163,7 @@ int main() {
                 default:
                     break;
             }
-            cout << tmp;
         }
-        cout << endl;
     }
 
     cout << x_crossroads + t_crossroads << ' ' << t_crossroads << ' '
