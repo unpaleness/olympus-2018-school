@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<problem
+<problem>
   package = "ru.ejudge.sample_contest"
-  id = "2"
+  id = "3"
   type = "standard">
   <statement language="ru_RU">
     <title>Трудно быть доном</title>
@@ -16,15 +16,15 @@
   </statement>
   <examples>
     <example>
-      <input>8 
-00100000 
-11111111 
-00100001 
-00100010 
-00111111 
-00100100 
-00101000 
-00110000 
+      <input>8
+00100000
+11111111
+00100001
+00100010
+00111111
+00100100
+00101000
+00110000
       </input>
       <output>4 3 1</output>
     </example>
