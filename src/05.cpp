@@ -34,7 +34,7 @@ int main(){
 
 bool isVowel(char letter){
     string g="aeiouyAEIOUY";
-    for(int i = 0; i < g.size(); i++){
+    for(unsigned int i = 0; i < g.size(); i++){
         if(letter == g[i]){
             return true;
         }
@@ -44,7 +44,7 @@ bool isVowel(char letter){
 
 bool isConsonant(char letter){
     string s="bcdfghjklmnpqrstvwxzBCDFGHJKLMNPQRSTVWXZ";
-    for(int i = 0; i < s.size(); i++){
+    for(unsigned int i = 0; i < s.size(); i++){
         if(letter == s[i]){
             return true;
         }
@@ -55,7 +55,7 @@ bool isConsonant(char letter){
 char findKey(string* stroka){
     map <char, int> keys;
     vector<char> simvol;
-    for(int i = 0; i < stroka->size() - 2;){
+    for(unsigned int i = 0; i < stroka->size() - 2;){
         if(isVowel(stroka->at(i)) && isConsonant(stroka->at(i + 1)) && (stroka->at(i) == stroka->at(i + 2))){
             simvol.push_back(stroka->at(i + 1));
             keys[stroka->at(i + 1)]++;
@@ -72,7 +72,7 @@ char findKey(string* stroka){
         }
     }
 
-    for(int i = 0; i < simvol.size();i++){
+    for(unsigned int i = 0; i < simvol.size();i++){
         if(keys[simvol[i]] == max){
             return simvol[i];
         }
@@ -83,7 +83,7 @@ char findKey(string* stroka){
 
 //void printDecode(string* stroka, char key){
 //	bool flag = false;
-//    for(int i = 0; i < stroka->size() - 2;){
+//    for(unsigned int i = 0; i < stroka->size() - 2;){
 //        if(isVowel(stroka->at(i)) && isConsonant(stroka->at(i + 1)) && (stroka->at(i) == stroka->at(i + 2)) && (stroka->at(i + 1) == key)){
 //        	cout << stroka->at(i);
 //        	if(i == stroka->size() - 3){
@@ -97,7 +97,7 @@ char findKey(string* stroka){
 //        }
 //    }
 //    if(!flag){
-//        for(int i = stroka->size() - 2; i < stroka->size(); i++){
+//        for(unsigned int i = stroka->size() - 2; i < stroka->size(); i++){
 //        	cout << stroka->at(i);
 //        }
 //    }
@@ -105,16 +105,13 @@ char findKey(string* stroka){
 //}
 
 void printDecode(string* stroka){
-	int flag = 0;
-    for(int i = 0; i < stroka->size();){
+    for(unsigned int i = 0; i < stroka->size();){
     	if(i < stroka->size() - 2){
             if(isVowel(stroka->at(i)) && isConsonant(stroka->at(i + 1)) && (stroka->at(i) == stroka->at(i + 2))){
             	cout << stroka->at(i);
             	if(i == stroka->size() - 3){
-            		flag = 1;
             	}
             	if(i == stroka->size() - 4){
-            		flag = 2;
             	}
                 i += 3;
             }
