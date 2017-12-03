@@ -7,7 +7,8 @@ SOURCES    = src/01.cpp \
              src/04.cpp \
              src/04_generator.cpp \
              src/05.cpp \
-             src/06.cpp
+             src/06.cpp \
+             src/07.cpp
 # OBJECTS    = $(SOURCES:src/%.cpp=obj/%.o)
 EXECUTABLE = $(SOURCES:src/%.cpp=%.out)
 
