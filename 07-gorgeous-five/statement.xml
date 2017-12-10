@@ -21,5 +21,10 @@
 200 180 185 180</input>
       <output>180 180 185 200</output>
     </example>
+    <example>
+      <input>6 175
+180 170 177 182 190 150</input>
+      <output>177 170 180 182 190</output>
+    </example>
   </examples>
 </problem>
