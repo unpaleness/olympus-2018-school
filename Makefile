@@ -9,7 +9,9 @@ SOURCES    = src/01.cpp \
              src/05.cpp \
              src/06.cpp \
              src/07.cpp \
-             src/08.cpp
+             src/08.cpp \
+             src/09.cpp \
+             src/10.cpp
 # OBJECTS    = $(SOURCES:src/%.cpp=obj/%.o)
 EXECUTABLE = $(SOURCES:src/%.cpp=%.out)
 
