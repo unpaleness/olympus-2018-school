@@ -41,7 +41,7 @@ for (int l = 0 ; l < K; l++)
     for (int i = 0 ; i < N; i++){
             for (int j = 0 ; j < M; j++){
                 massAns[l].second  += ((massV.at(l).at(i).at(j))  - '0');
-                if (massV.at(l).at(i).at(j) != sheme.at(i).at(j) && sheme.at(i).at(j) != 'x')
+                if (massV.at(l).at(i).at(j) != sheme.at(i).at(j) && (sheme.at(i).at(j) != 'x' || massV.at(l).at(i).at(j) == '0'))
                     massAns[l].first = true;//не подходяшая карта
 //                 cout << massV.at(l).at(i).at(j);
             }
